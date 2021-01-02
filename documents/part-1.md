@@ -1,4 +1,4 @@
-# Chapter 1: Github to Pipeline
+# Part 1: Github to Pipeline
 
 ## WARNING
 
@@ -94,7 +94,10 @@ npx cdk bootstrap \
 npm install @aws-cdk/pipelines \ 
 @aws-cdk/aws-codepipeline-actions \ 
 @aws-cdk/aws-codepipeline \
-@aws-cdk/aws-ssm
+@aws-cdk/aws-ssm \ 
+@aws-cdk/core \ 
+@aws-cdk/aws-apigateway \ 
+@aws-cdk/aws-lambda \ 
 ```
 
 ### Pipeline code

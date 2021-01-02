@@ -17,18 +17,19 @@ export class AwsGoCdkCicdStack extends cdk.Stack {
       cloudAssemblyArtifact: cloudAssemblyArtifact,
       selfMutating: true,
       sourceAction: new codepipeline_actions.BitBucketSourceAction({
-        owner: 'dihmuzikien', // Your GitHub account name
-        repo: 'aws-go-cdk-cicd-private', // Your GitHub repo
+        owner: '<github-account>', // Your GitHub account name
+        repo: '<repo-name>', // Your GitHub repo
         branch: 'main',
         actionName: 'GitHub',
         output: sourceArtifact,
         codeBuildCloneOutput: true,
-        connectionArn: ssm.StringParameter.valueFromLookup(this, 'GITHUB_CONNECTOR_ARN ')
+        connectionArn: '<github-codestar-connection-arn>'
       }),
       synthAction: SimpleSynthAction.standardNpmSynth({
         cloudAssemblyArtifact: cloudAssemblyArtifact,
         sourceArtifact: sourceArtifact,
-        installCommand: 'npm ci'
+        installCommand: 'npm ci',
+        buildCommand: './test.sh ; ./build.sh',
       })
     })
 
